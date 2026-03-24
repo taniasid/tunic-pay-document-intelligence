@@ -1,0 +1,81 @@
+{
+  "file_id": "market_place_listing",
+  "category": "marketplace_listing_screenshot",
+  "category_confidence": 0.95,
+  "extracted_fields": {
+    "entity_name": "Ming Luk",
+    "amount": 25000.0,
+    "currency": "GBP",
+    "date": null,
+    "counterparty": null,
+    "platform": "Facebook Marketplace",
+    "contact_details": null,
+    "red_flags": [
+      "Engine size listed as -1.0L — implausible negative value, suggests data manipulation or template copy-paste error",
+      "High-value vehicle (£25,000) sold via informal social media marketplace rather than regulated dealer",
+      "Location listed as approximate only — reduces buyer verification ability"
+    ],
+    "urgency_language_detected": false,
+    "category": "marketplace_listing_screenshot",
+    "category_confidence": 0.95
+  },
+  "scoring_rules": [
+    {
+      "rule_id": "R01_high_amount",
+      "triggered": true,
+      "weight": 0.2,
+      "explanation": "Marketplace listing price 25000.0 GBP exceeds threshold of 5000."
+    },
+    {
+      "rule_id": "R02_missing_invoice_date",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Rule only applies to invoices."
+    },
+    {
+      "rule_id": "R03_urgency_language",
+      "triggered": false,
+      "weight": 0.25,
+      "explanation": "No urgency language detected."
+    },
+    {
+      "rule_id": "R04_llm_red_flags",
+      "triggered": true,
+      "weight": 0.2,
+      "explanation": "LLM flagged 3 anomalies: Engine size listed as -1.0L — implausible negative value; High-value vehicle sold via informal social media marketplace; Location listed as approximate only."
+    },
+    {
+      "rule_id": "R05_missing_counterparty",
+      "triggered": true,
+      "weight": 0.1,
+      "explanation": "No counterparty identified — legitimate commercial documents always name both parties."
+    },
+    {
+      "rule_id": "R06_crypto_payment_in_chat",
+      "triggered": false,
+      "weight": 0.3,
+      "explanation": "Rule only applies to chat screenshots."
+    },
+    {
+      "rule_id": "R07_micro_cap_token",
+      "triggered": false,
+      "weight": 0.25,
+      "explanation": "Rule only applies to website/exchange screenshots."
+    },
+    {
+      "rule_id": "R08_implausible_listing_data",
+      "triggered": true,
+      "weight": 0.2,
+      "explanation": "Listing data appears implausible or contradictory: Engine size listed as -1.0L; High-value vehicle sold via informal marketplace."
+    }
+  ],
+  "risk_score": 0.7,
+  "risk_label": "high",
+  "summary": "Ming Luk — marketplace listing screenshot flagged as HIGH risk (score 0.70). Primary concern: Marketplace listing price 25000.0 GBP exceeds threshold of 5000 (3 further rules also triggered).",
+  "processing_metadata": {
+    "model_used": "claude-opus-4-5",
+    "latency_ms": 1950,
+    "extraction_warnings": [],
+    "rule_set_version": "v1"
+  }
+}

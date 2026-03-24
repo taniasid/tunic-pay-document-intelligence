@@ -1,0 +1,84 @@
+{
+  "file_id": "chat_screenshot",
+  "category": "chat_screenshot",
+  "category_confidence": 0.97,
+  "extracted_fields": {
+    "entity_name": "Olina",
+    "amount": 4000.0,
+    "currency": "USDT",
+    "date": null,
+    "counterparty": "Slava",
+    "platform": "ACCIO.com",
+    "contact_details": "+44 73 7761 8918",
+    "red_flags": [
+      "Unsolicited job offer via unknown contact recruiting for commission-based role",
+      "Payment promised exclusively in USDT (crypto) — avoids banking oversight",
+      "Vague job description requiring no skills ('just operate a mobile phone')",
+      "Referral code used for recruitment — classic pyramid/task scam onboarding",
+      "Salary structure mimics pig-butchering task scam ($500 / $1500 / $2000 tiers)",
+      "Company ACCIO.com is not a verifiable established employer"
+    ],
+    "urgency_language_detected": false,
+    "category": "chat_screenshot",
+    "category_confidence": 0.97
+  },
+  "scoring_rules": [
+    {
+      "rule_id": "R01_high_amount",
+      "triggered": true,
+      "weight": 0.2,
+      "explanation": "Chat screenshot references payment of 4000.0 USDT — high for an informal channel."
+    },
+    {
+      "rule_id": "R02_missing_invoice_date",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Rule only applies to invoices."
+    },
+    {
+      "rule_id": "R03_urgency_language",
+      "triggered": false,
+      "weight": 0.25,
+      "explanation": "No urgency language detected."
+    },
+    {
+      "rule_id": "R04_llm_red_flags",
+      "triggered": true,
+      "weight": 0.2,
+      "explanation": "LLM flagged 6 anomalies: Unsolicited job offer via unknown contact; Payment promised exclusively in USDT; Vague job description requiring no skills; Referral code used for recruitment; Salary structure mimics pig-butchering task scam."
+    },
+    {
+      "rule_id": "R05_missing_counterparty",
+      "triggered": false,
+      "weight": 0.1,
+      "explanation": "Rule only applies to invoices and marketplace listings."
+    },
+    {
+      "rule_id": "R06_crypto_payment_in_chat",
+      "triggered": true,
+      "weight": 0.3,
+      "explanation": "Chat references crypto/USDT payment — strongly associated with task-scam fraud."
+    },
+    {
+      "rule_id": "R07_micro_cap_token",
+      "triggered": false,
+      "weight": 0.25,
+      "explanation": "Rule only applies to website/exchange screenshots."
+    },
+    {
+      "rule_id": "R08_implausible_listing_data",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Rule only applies to marketplace listings."
+    }
+  ],
+  "risk_score": 0.7,
+  "risk_label": "high",
+  "summary": "Olina — chat screenshot flagged as HIGH risk (score 0.70). Primary concern: Chat references crypto/USDT payment — strongly associated with task-scam fraud (2 further rules also triggered).",
+  "processing_metadata": {
+    "model_used": "claude-opus-4-5",
+    "latency_ms": 2340,
+    "extraction_warnings": [],
+    "rule_set_version": "v1"
+  }
+}

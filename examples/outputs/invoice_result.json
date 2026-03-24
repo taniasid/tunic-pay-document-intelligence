@@ -1,0 +1,79 @@
+{
+  "file_id": "invoice",
+  "category": "invoice",
+  "category_confidence": 0.98,
+  "extracted_fields": {
+    "entity_name": "BV CRE8",
+    "amount": 181.5,
+    "currency": "EUR",
+    "date": "2022-09-05",
+    "counterparty": "BV CRE8",
+    "platform": "Comanage",
+    "contact_details": "Diestersteenweg 462, 3680 Maaseik, Belgium",
+    "red_flags": [
+      "Issuer and recipient appear to be the same entity (BV CRE8) — possible self-invoice"
+    ],
+    "urgency_language_detected": false,
+    "category": "invoice",
+    "category_confidence": 0.98
+  },
+  "scoring_rules": [
+    {
+      "rule_id": "R01_high_amount",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Amount is within normal range for this document type."
+    },
+    {
+      "rule_id": "R02_missing_invoice_date",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Invoice date present: 2022-09-05."
+    },
+    {
+      "rule_id": "R03_urgency_language",
+      "triggered": false,
+      "weight": 0.25,
+      "explanation": "No urgency language detected."
+    },
+    {
+      "rule_id": "R04_llm_red_flags",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "LLM flagged 1 anomaly — below threshold of 2."
+    },
+    {
+      "rule_id": "R05_missing_counterparty",
+      "triggered": false,
+      "weight": 0.1,
+      "explanation": "Counterparty identified: BV CRE8."
+    },
+    {
+      "rule_id": "R06_crypto_payment_in_chat",
+      "triggered": false,
+      "weight": 0.3,
+      "explanation": "Rule only applies to chat screenshots."
+    },
+    {
+      "rule_id": "R07_micro_cap_token",
+      "triggered": false,
+      "weight": 0.25,
+      "explanation": "Rule only applies to website/exchange screenshots."
+    },
+    {
+      "rule_id": "R08_implausible_listing_data",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Rule only applies to marketplace listings."
+    }
+  ],
+  "risk_score": 0.0,
+  "risk_label": "low",
+  "summary": "BV CRE8 — invoice flagged as LOW risk (score 0.00). No risk rules triggered. Note: issuer and recipient share the same entity name, consistent with a self-billing arrangement.",
+  "processing_metadata": {
+    "model_used": "claude-opus-4-5",
+    "latency_ms": 1820,
+    "extraction_warnings": [],
+    "rule_set_version": "v1"
+  }
+}

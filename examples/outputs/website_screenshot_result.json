@@ -1,0 +1,82 @@
+{
+  "file_id": "website_screenshot",
+  "category": "website_screenshot",
+  "category_confidence": 0.93,
+  "extracted_fields": {
+    "entity_name": "PEHEM/SOL",
+    "amount": 1473.0,
+    "currency": "USD",
+    "date": null,
+    "counterparty": null,
+    "platform": "dexscreener.com",
+    "contact_details": null,
+    "red_flags": [
+      "Only 127 token holders — extreme micro-cap, consistent with wash-trading or layering",
+      "Token trading on DEX (decentralised exchange) — unregulated, no KYC",
+      "Truncated wallet addresses (50yNkS, NyRxWa, MdgMWs) obscure true counterparties",
+      "Mixed buy/sell activity from same wallets (Y8i9JM appearing on both sides) — possible wash-trading"
+    ],
+    "urgency_language_detected": false,
+    "category": "website_screenshot",
+    "category_confidence": 0.93
+  },
+  "scoring_rules": [
+    {
+      "rule_id": "R01_high_amount",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Amount is within normal range for this document type."
+    },
+    {
+      "rule_id": "R02_missing_invoice_date",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Rule only applies to invoices."
+    },
+    {
+      "rule_id": "R03_urgency_language",
+      "triggered": false,
+      "weight": 0.25,
+      "explanation": "No urgency language detected."
+    },
+    {
+      "rule_id": "R04_llm_red_flags",
+      "triggered": true,
+      "weight": 0.2,
+      "explanation": "LLM flagged 4 anomalies: Only 127 token holders; Token trading on DEX; Truncated wallet addresses obscure true counterparties; Mixed buy/sell activity from same wallets."
+    },
+    {
+      "rule_id": "R05_missing_counterparty",
+      "triggered": false,
+      "weight": 0.1,
+      "explanation": "Rule only applies to invoices and marketplace listings."
+    },
+    {
+      "rule_id": "R06_crypto_payment_in_chat",
+      "triggered": false,
+      "weight": 0.3,
+      "explanation": "Rule only applies to chat screenshots."
+    },
+    {
+      "rule_id": "R07_micro_cap_token",
+      "triggered": true,
+      "weight": 0.25,
+      "explanation": "Screenshot shows DEX trading with very low holder count — indicative of micro-cap token manipulation or wash-trading."
+    },
+    {
+      "rule_id": "R08_implausible_listing_data",
+      "triggered": false,
+      "weight": 0.2,
+      "explanation": "Rule only applies to marketplace listings."
+    }
+  ],
+  "risk_score": 0.45,
+  "risk_label": "medium",
+  "summary": "PEHEM/SOL — website screenshot flagged as MEDIUM risk (score 0.45). Primary concern: Screenshot shows DEX trading with very low holder count (127) — indicative of micro-cap token manipulation or wash-trading (1 further rule also triggered).",
+  "processing_metadata": {
+    "model_used": "claude-opus-4-5",
+    "latency_ms": 1680,
+    "extraction_warnings": [],
+    "rule_set_version": "v1"
+  }
+}
