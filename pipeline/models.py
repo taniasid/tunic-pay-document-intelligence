@@ -1,5 +1,5 @@
 """
-Output contract schemas. Every field that may not apply to a given
+Output contract schemas: Every field that may not apply to a given
 document category is Optional and defaults to None so the schema
 stays consistent across all file types.
 """

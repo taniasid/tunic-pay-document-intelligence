@@ -1,5 +1,5 @@
 """
-LLM extraction layer.
+LLM extraction layer:
 
 Sends document image(s) to Claude via the Anthropic API and returns a
 validated ExtractedFields object. Handles:
@@ -20,7 +20,6 @@ from pydantic import ValidationError
 from .models import ExtractedFields
 from .ingest import FilePayload, CONFIDENCE_THRESHOLD
 
-# Any vision-capable model available on OpenRouter works here.
 # claude-opus-4-5 via OpenRouter — strong vision + reliable JSON instruction-following.
 MODEL = "anthropic/claude-opus-4-5"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"

@@ -1,5 +1,5 @@
 """
-Scoring layer.
+Scoring layer:
 
 Runs all registered rules against an ExtractedFields object and
 produces a composite risk score, label, and summary.

@@ -15,7 +15,7 @@ from pathlib import Path
 
 from PIL import Image
 
-# Optional PDF-to-image dependency
+# PDF-to-image dependency
 try:
     from pdf2image import convert_from_bytes
     PDF_SUPPORT = True
@@ -34,7 +34,7 @@ MAX_FILE_SIZE_MB = 20
 CONFIDENCE_THRESHOLD = 0.60   # Below this → route to 'other' for human review
 
 # Resize images so the longest edge is at most this many pixels.
-# Keeps base64 payload well under API limits while preserving readability.
+# Keeps base64 payload under API limits while preserving readability.
 MAX_IMAGE_DIMENSION = 1568
 JPEG_QUALITY = 85
 

@@ -4,13 +4,12 @@ Scoring rules v1.
 Design principles:
   - Each rule is a plain function: (ExtractedFields) -> RuleResult
   - Rules are registered in RULES — adding a new rule = write a function + append it
-  - No rule knows about any other rule
+  - Rules are independent of each other
   - All thresholds are module-level constants for easy tuning and audit
 
 To add a new rule:
   1. Write a function matching the signature below
   2. Append it to RULES
-  That's it. Existing rules are never touched.
 
 Rule weights sum to > 1.0 intentionally; the scorer clamps the final
 composite score to [0, 1]. This lets high-severity rules dominate without
@@ -22,7 +21,7 @@ from pipeline.models import ExtractedFields, RuleResult
 
 RULE_SET_VERSION = "v1"
 
-# ── Thresholds (tune here, not inside rules) ──────────────────────────────────
+# ── Thresholds  ──────────────────────────────────
 
 HIGH_AMOUNT_INVOICE = 10_000          # EUR/USD — flagged on invoices
 HIGH_AMOUNT_MARKETPLACE = 5_000       # EUR/USD — flagged on marketplace listings
