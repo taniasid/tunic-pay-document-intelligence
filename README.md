@@ -130,4 +130,5 @@ The composite score = sum of weights of triggered rules, clamped to `[0, 1]`. We
 - compare Claude Opus LLM output with Gemini Flash 1.5 (strong reputation for similar tasks)
 - For mixed-category documents, run extraction once per detected category and merge the red flags/aggregate risk scores (currently the system is designed to assign the dominant category)
 - generate synthetic data & collect more examples of documents associated to scam/fraud incidents for further validation
+- revisit weighted scoring mechanism as more rules are introduced
 
